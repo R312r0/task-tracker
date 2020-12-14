@@ -1,0 +1,161 @@
+{% extends "t_t/index.html" %}
+{% block title %} Detail {% endblock %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+
+<div class="row">
+    <div class="col-2 d-flex justify-content-start align-items-center ml-3">
+        <a type="button" class="btn btn-secondary home-button" href="{% url 'index' %}"><i class="fas fa-home"></i></a>
+    </div>
+    <div class="col-8 d-flex justify-content-center align-items-center">
+        <h1 class="display-4"> {{table.name}} board</h1>
+    </div>
+
+</div>
+
+    <div class="row mt-5">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <h3> You can create task in this board by clicking this button<i class="fas fa-long-arrow-alt-right"></i> </h3><a type="button" class="btn btn-info ml-3" href="{% url 'create_task' table.id%}">Create task</a>
+        </div>
+        </div>
+    </div>
+
+<div class="row mt-5">
+        <div class="col-3 d-flex">
+                <div class="card-body">
+                    <h6 class="card-title text-uppercase text-truncate py-2">To Do : {{to_do.count}}</h6>
+                    <div class="items border border-light">
+                        {% for i in to_do %}
+                        <div class="card draggable shadow-sm mt-3" id="cd1" draggable="true" ondragstart="drag(event)">
+                            <div class="card-body p-2">
+                                <div class="card-title">
+                                    <a href="{% url 'task-page' i.id %}" class="lead font-weight-light">{{i.subject}}</a><h6 class="float-right">{{i.date_created}}</h6>
+                                </div>
+                                <p>
+                                <h6>Task title: {{i.task_title}} </h6>
+                                </p>
+                                <p>
+                                <h6> Status: {{i.status}} </h6>
+                                </p>
+                                <p>
+                                    <a class="btn btn-info btn-sm" href="{% url 'change_status' i.id %}"> Change status </a>
+                                </p>
+                                <p>
+                                <h6> Priority: {{i.priority}} </h6>
+                                </p>
+                                <div class="btn btn-group-justified float-right">
+                                    <a class="btn btn-info btn-sm" href="{% url 'update_task' i.id %}">Edit</a>
+                                    <a class="btn btn-danger btn-sm" href="{% url 'delete_task' i.id %}">Delete</a>
+                                </div>
+
+                                <b><p class="float-left">Last update: {{i.updated}}</p></b>
+
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+        </div>
+        <div class="col-3 d-flex">
+                <div class="card-body">
+                    <h6 class="card-title text-uppercase text-truncate py-2">In progress: {{in_progress.count}}</h6>
+                    <div class="items border border-light">
+                        {% for i in in_progress %}
+                        <div class="card draggable shadow-sm mt-3" id="cd1" draggable="true" ondragstart="drag(event)">
+                            <div class="card-body p-2">
+                                <div class="card-title">
+                                    <a href="{% url 'task-page' i.id %}" class="lead font-weight-light">{{i.subject}}</a><h6 class="float-right">{{i.date_created}}</h6>
+                                </div>
+                                <p>
+                                <h6>Task title: {{i.task_title}} </h6>
+                                </p>
+                                <p>
+                                <h6> Status: {{i.status}} </h6>
+                                </p>
+                                <p>
+                                    <a class="btn btn-info btn-sm" href="{% url 'change_status' i.id %}"> Change status </a>
+                                </p>
+                                <p>
+                                <h6> Priority: {{i.priority}} </h6>
+                                </p>
+                                <div class="btn btn-group-justified float-right">
+                                    <a class="btn btn-info btn-sm" href="{% url 'update_task' i.id %}">Edit</a>
+                                    <a class="btn btn-danger btn-sm" href="{% url 'delete_task' i.id %}">Delete</a>
+                                </div>
+                                   <b><p class="float-left">Last update: {{i.updated}}</p></b>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+        </div>
+            <div class="col-3 d-flex">
+                <div class="card-body">
+                    <h6 class="card-title text-uppercase text-truncate py-2">Ready for test: {{ready_for_test.count}}</h6>
+                    <div class="items border border-light">
+                        {% for i in ready_for_test %}
+                        <div class="card draggable shadow-sm mt-3" id="cd1" draggable="true" ondragstart="drag(event)">
+                            <div class="card-body p-2">
+                                <div class="card-title">
+                                    <a href="{% url 'task-page' i.id %}" class="lead font-weight-light">{{i.subject}}</a><h6 class="float-right">{{i.date_created}}</h6>
+                                </div>
+                                <p>
+                                <h6>Task title: {{i.task_title}} </h6>
+                                </p>
+                                <p>
+                                <h6> Status: {{i.status}} </h6>
+                                </p>
+                                <p>
+                                    <a class="btn btn-info btn-sm" href="{% url 'change_status' i.id %}"> Change status </a>
+                                </p>
+                                <p>
+                                <h6> Priority: {{i.priority}} </h6>
+                                </p>
+                                <div class="btn btn-group-justified float-right">
+                                    <a class="btn btn-info btn-sm" href="{% url 'update_task' i.id %}">Edit</a>
+                                    <a class="btn btn-danger btn-sm" href="{% url 'delete_task' i.id %}">Delete</a>
+                                </div>
+                                    <b><p class="float-left">Last update: {{i.updated}}</p></b>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+        </div>
+            <div class="col-3 d-flex">
+                <div class="card-body">
+                    <h6 class="card-title text-uppercase text-truncate py-2">Closed: {{closed.count}}</h6>
+                    <div class="items border border-light">
+                        {% for i in closed %}
+                        <div class="card draggable shadow-sm mt-3" id="cd1" draggable="true" ondragstart="drag(event)">
+                            <div class="card-body p-2">
+                                <div class="card-title">
+                                    <a href="{% url 'task-page' i.id %}" class="lead font-weight-light">{{i.subject}}</a><h6 class="float-right">{{i.date_created}}</h6>
+                                </div>
+                                <p>
+                                <h6>Task title: {{i.task_title}} </h6>
+                                </p>
+                                <p>
+                                <h6> Status: {{i.status}} </h6>
+                                </p>
+                                <p>
+                                    <a class="btn btn-info btn-sm" href="{% url 'change_status' i.id %}"> Change status </a>
+                                </p>
+                                <p>
+                                <h6> Priority: {{i.priority}} </h6>
+                                </p>
+                                <div class="btn btn-group-justified float-right">
+                                    <a class="btn btn-info btn-sm" href="{% url 'update_task' i.id %}">Edit</a>
+                                    <a class="btn btn-danger btn-sm" href="{% url 'delete_task' i.id %}">Delete</a>
+                                </div>
+                                   <b><p class="float-left">Last update: {{i.updated}}</p></b>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+        </div>
+</div>
+{% endblock %}

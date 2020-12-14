@@ -1,0 +1,22 @@
+{% extends 't_t/main.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+                <h1 class="ml-5 mt-5"><a class="text-dark" href="{% url 'index' %}"><i class="fas fa-arrow-left"></i> </a></h1>
+
+
+
+
+
+            <div class="col-6 offset-3">
+                    <div class="jumbotron mt-5">
+                     <h1 class="display-4"> Create task here</h1>
+                    <form method="POST">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <button type="submit" class="btn btn-info"> Save </button>
+                </form>
+            </div>
+
+{% endblock %}

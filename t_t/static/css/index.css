@@ -1,0 +1,52 @@
+.board {
+
+    background-color: lightgray;
+    padding: 5% 10%;
+
+}
+
+.board-header {
+
+    width: 100%;
+    padding: 3px 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 100%;
+    height: 300px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.card-desc {
+    background-color: lightsteelblue;
+    border-radius: 10px;
+    display: flex;
+    padding: 15px 15px;
+}
+.board-jumb {
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+}
+
+
+.change-status-header {
+    height: 9vh;
+        background-color: lightgray;
+}
+.change-status {
+    padding: 5% 5%;
+    height: 90vh;
+    width: content-box;
+    background-color: lightgray;
+
+}
+
+.task-jumb {
+
+    width: 50%;
+
+}
