@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '+2%+9-f-z#7&t*l&o#ct%1w1t=1b%0w$acanf+nk$(&=ts$1^j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['task-tracker-kanban-django.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
